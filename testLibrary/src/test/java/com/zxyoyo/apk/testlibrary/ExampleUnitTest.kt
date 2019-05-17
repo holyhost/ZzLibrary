@@ -1,4 +1,4 @@
-package com.zxyoyo.apk.zzlibrary
+package com.zxyoyo.apk.testlibrary
 
 import org.junit.Test
 
