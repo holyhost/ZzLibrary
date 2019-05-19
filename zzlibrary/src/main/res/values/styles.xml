@@ -48,9 +48,12 @@
         <!--hint提示-->
         <attr name="zz_item_hint_name" format="string" />
         <!--是否可以手动输入-->
-        <attr name="zz_item_edit_focus" format="boolean" />
+        <attr name="zz_item_editable" format="boolean" />
         <!--是否可以点击，触发点击事件-->
         <attr name="zz_item_clickable" format="boolean" />
+        <!--是否显示下划线，默认显示-->
+        <attr name="zz_item_bottom_line" format="boolean" />
+
         <!--类型：普通条目，时间选择器，图片选择器等-->
         <attr name="zz_item_type" >
             <enum name="Default" value="0"/>

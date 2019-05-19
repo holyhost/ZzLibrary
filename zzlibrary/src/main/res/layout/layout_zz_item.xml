@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ll_root"
+
     android:orientation="vertical">
 
     <android.support.constraint.ConstraintLayout
@@ -22,6 +23,14 @@
             android:id="@+id/gl_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+        <android.support.constraint.Barrier
+                app:barrierDirection="right"
+                android:id="@+id/br_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="gl_left"
+        />
         <TextView
             android:textSize="16sp"
             android:id="@+id/tv_name"
@@ -29,7 +38,6 @@
             android:maxLines="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -44,16 +52,18 @@
             android:clickable="false"
             android:inputType="none"
             android:id="@+id/et_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/br_left"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-
 
             />
     </android.support.constraint.ConstraintLayout>
     <View
+            android:id="@+id/view_split_line"
+            android:background="@color/zz_color_horizontal_split_line"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"

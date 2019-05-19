@@ -1,1 +1,1 @@
-include ':app', ':zzlibrary', ':testLibrary'
+include  ':zzlibrary', ':testLibrary', ':testLocal'

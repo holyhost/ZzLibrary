@@ -10,7 +10,8 @@
     <com.zxyoyo.apk.zzlibrary.ZzItemView
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:zz_item_hint_name="清输入名称"
+            app:zz_item_hint_name="请输入名称"
+            app:zz_item_edit_focus="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 </android.support.constraint.ConstraintLayout>

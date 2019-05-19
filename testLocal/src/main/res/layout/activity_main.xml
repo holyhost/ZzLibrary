@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+    <com.zxyoyo.apk.zzlibrary.ZzItemView
+            android:id="@+id/zz_123"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:zz_item_text_name="姓名"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+    <com.zxyoyo.apk.zzlibrary.ZzItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:zz_item_text_name="兴趣爱好"
+            app:zz_item_hint_name="请输入您的兴趣爱好"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/zz_123"/>
+
+</android.support.constraint.ConstraintLayout>

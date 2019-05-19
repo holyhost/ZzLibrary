@@ -2,6 +2,8 @@ package com.zxyoyo.apk.zzlibrary;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.annotation.IntDef;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -18,9 +20,11 @@ import android.widget.TextView;
  * function describe: form item
  **/
 public class ZzItemView extends LinearLayout {
-    private EditText et_name;
-    private TextView tv_name;
-    private LinearLayout ll_root;
+    private EditText et_name;//using for right input
+    private TextView tv_name;// using for left text showing
+    private LinearLayout ll_root;// root view of zzitemview
+    private View line_view;// the item bottom line
+
     private static final int INPUT_TYPE_STRING = 0;// default is string type
     private static final int INPUT_TYPE_PASSWORD = 1;// type password
     private static final int INPUT_TYPE_EMAIL = 2;//  email type
@@ -37,21 +41,27 @@ public class ZzItemView extends LinearLayout {
     }
 
 
+    /**
+     * init some parameter for view
+     * @param context
+     * @param attrs
+     */
     private void initView(Context context,AttributeSet attrs){
         LayoutInflater.from(context).inflate(R.layout.layout_zz_item,this,true);
 
         tv_name = findViewById(R.id.tv_name);
         et_name = findViewById(R.id.et_name);
         ll_root = findViewById(R.id.ll_root);
-
+        line_view = findViewById(R.id.view_split_line);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ZzItemView);
         if(typedArray!=null && typedArray.length()>0){
             String text = typedArray.getString(R.styleable.ZzItemView_zz_item_text_name);
             String edit = typedArray.getString(R.styleable.ZzItemView_zz_item_edit_name);
             String hint = typedArray.getString(R.styleable.ZzItemView_zz_item_hint_name);
-            Boolean focus = typedArray.getBoolean(R.styleable.ZzItemView_zz_item_edit_focus,false);
+            Boolean editable = typedArray.getBoolean(R.styleable.ZzItemView_zz_item_editable,false);
             Boolean clickable = typedArray.getBoolean(R.styleable.ZzItemView_zz_item_clickable,false);
+            Boolean showLine = typedArray.getBoolean(R.styleable.ZzItemView_zz_item_bottom_line,true);
             int inputType = typedArray.getInt(R.styleable.ZzItemView_zz_item_input_type,0);
             setInputType(inputType);
             int type = typedArray.getInt(R.styleable.ZzItemView_zz_item_type, 0);
@@ -60,12 +70,13 @@ public class ZzItemView extends LinearLayout {
                 tv_name.setText(text);
             }
             if(!TextUtils.isEmpty(edit)){
-                et_name.setText(text);
+                et_name.setText(edit);
             }
             if(!TextUtils.isEmpty(hint)){
                 et_name.setHint(hint);
+                editable = true;
             }
-            if (focus){
+            if (editable){
                 et_name.setFocusable(true);
                 et_name.setClickable(true);
                 et_name.setFocusable(true);
@@ -83,33 +94,65 @@ public class ZzItemView extends LinearLayout {
                     }
                 });
             }
+            if(!showLine){
+                line_view.setVisibility(View.INVISIBLE);
+            }
 
         }
 
     }
 
+    /**
+     *  enable right input can be input
+     *  default can not be input
+     * @param editable true :can input content,and false is can't
+     */
     public void setEditable(boolean editable){
         et_name.setClickable(editable);
         et_name.setFocusable(editable);
         et_name.setFocusableInTouchMode(editable);
     }
 
+
+    public void setBottomLineVisiblity(   int visibility){
+        if(visibility == View.VISIBLE||visibility == View.GONE||visibility == View.INVISIBLE)
+        line_view.setVisibility(visibility);
+    }
+
+    /**
+     *  set right input value
+     * @param text input value
+     */
     public void setText(String text){
         if(et_name!=null){
             et_name.setText(text);
         }
     }
 
+    /**
+     * set for left text
+     * @param name left text
+     */
     public void setName(String name){
         tv_name.setText(name);
     }
 
+    /**
+     *
+     * @return if input has content
+     * true: nothing in input \ input content is zero
+     * false: input has content
+     */
     public boolean isEmpty(){
         if(TextUtils.isEmpty(et_name.getText().toString()))return true;
         if(TextUtils.equals(et_name.getText().toString(),"0")) return true;
         return false;
     }
 
+    /**
+     * get input value
+     * @return input value ,default is empty character ""
+     */
     public String getText(){
         if(et_name!=null){
             return et_name.getText().toString();
@@ -117,6 +160,10 @@ public class ZzItemView extends LinearLayout {
         return "";
     }
 
+    /**
+     * set input type ,default is string
+     * @param type number \ string \ password \ email
+     */
     private void setInputType(int type){
         switch (type){
             case INPUT_TYPE_STRING:
@@ -137,10 +184,17 @@ public class ZzItemView extends LinearLayout {
     }
     private OnItemClickListener listener;
 
+    /**
+     * using for item click interface
+     */
     public interface OnItemClickListener{
         void onItemClick();
     }
 
+    /**
+     * set item click listener
+     * @param listener
+     */
     public void setListener(OnItemClickListener listener) {
         this.listener = listener;
     }
