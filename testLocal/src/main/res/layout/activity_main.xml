@@ -17,6 +17,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
     <com.zxyoyo.apk.zzlibrary.ZzItemView
+            android:id="@+id/zz_12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:zz_item_text_name="兴趣爱好"
@@ -25,4 +26,14 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/zz_123"/>
 
+    <FrameLayout
+            android:text="go"
+
+            app:layout_constraintTop_toBottomOf="@+id/zz_12"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/fl_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 </android.support.constraint.ConstraintLayout>

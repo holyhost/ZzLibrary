@@ -2,6 +2,11 @@ package com.zxyoyo.apk.zzlibrary;
 
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * time:2019/5/20
@@ -13,6 +18,15 @@ import android.os.Bundle;
  **/
 public class FormFragment extends BaseFragment {
 
+    private LinearLayout ll_parent;
+    private List<ItemBean> mDatas;
+
+
+
+    public static FormFragment getInstance(){
+        return new FormFragment();
+    }
+
     @Override
     public int getLayoutResId() {
         return R.layout.fragment_form;
@@ -20,6 +34,45 @@ public class FormFragment extends BaseFragment {
 
     @Override
     public void finishCreateView(Bundle state) {
+        initViews(parentView);
+        List<ItemBean> list = new ArrayList<>();
+        list.add(new ItemBean("姓名","小明1"));
+        list.add(new ItemBean("姓名","小明2"));
+        list.add(new ItemBean("姓名","小明3"));
+        showResult(list);
 
     }
+
+    @Override
+    protected void loadData() {
+        //init  form data
+
+    }
+
+
+    public void showMessage(String message) {
+        Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
+    }
+
+    public void showResult(List<ItemBean> data) {
+        if(null == data||data.size()<1) return;
+        if(getContext() == null){
+            LogUtil.e("getcontext = null ----------------");
+            return;
+        }
+        for(ItemBean bean:data){
+            ZzItemView itemView = new ZzItemView(getContext(),bean);
+            ll_parent.addView(itemView);
+        }
+        ll_parent.invalidate();
+    }
+
+
+    private void initViews(View view) {
+        // init views
+        ll_parent = view.findViewById(R.id.ll_parent);
+    }
+
+
+
 }

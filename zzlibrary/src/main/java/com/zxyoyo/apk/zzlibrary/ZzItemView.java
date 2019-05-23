@@ -2,8 +2,6 @@ package com.zxyoyo.apk.zzlibrary;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.IntDef;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -24,6 +22,7 @@ public class ZzItemView extends LinearLayout {
     private TextView tv_name;// using for left text showing
     private LinearLayout ll_root;// root view of zzitemview
     private View line_view;// the item bottom line
+    private ItemBean valueBean;// all value
 
     private static final int INPUT_TYPE_STRING = 0;// default is string type
     private static final int INPUT_TYPE_PASSWORD = 1;// type password
@@ -32,6 +31,12 @@ public class ZzItemView extends LinearLayout {
 
     public ZzItemView(Context context) {
         super(context);
+    }
+
+    public ZzItemView(Context context,ItemBean valueBean) {
+        this(context);
+        initView(context,null);
+        setItemValue(valueBean);
     }
 
 
@@ -197,5 +202,28 @@ public class ZzItemView extends LinearLayout {
      */
     public void setListener(OnItemClickListener listener) {
         this.listener = listener;
+    }
+
+    public ItemBean getItemValue() {
+        if(null==valueBean){
+            valueBean = new ItemBean();
+        }
+        valueBean.setEditValue(et_name.getText().toString());
+        return valueBean;
+    }
+
+    public void setItemValue(ItemBean valueBean) {
+        this.valueBean = valueBean;
+        initItemData();
+    }
+
+    private void initItemData(){
+        if(valueBean == null) return;
+        tv_name.setText(null==valueBean.getNameValue()?"":valueBean.getNameValue());
+        et_name.setText(null==valueBean.getEditValue()?"":valueBean.getEditValue());
+        if(valueBean.isEditable()){
+            this.setInputType(valueBean.getInputType());
+
+        }
     }
 }

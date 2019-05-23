@@ -26,8 +26,8 @@ public abstract class BaseFragment extends Fragment {
     @LayoutRes
      int getLayoutResId();
 
-    private FragmentActivity activity;
-    private Context context;
+    protected FragmentActivity activity;
+    protected Context context;
 
     @Nullable
     @Override
