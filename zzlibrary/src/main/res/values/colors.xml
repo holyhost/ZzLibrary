@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="zz_color_horizontal_split_line">#AAA9A9</color>
+    <color name="zz_color_editable">#000</color>
+    <color name="zz_color_not_editable">#aaa</color>
+
 
 </resources>

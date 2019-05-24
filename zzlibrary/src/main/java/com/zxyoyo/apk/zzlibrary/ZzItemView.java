@@ -2,8 +2,10 @@ package com.zxyoyo.apk.zzlibrary;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.text.InputType;
+import android.text.Selection;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -113,13 +115,27 @@ public class ZzItemView extends LinearLayout {
      * @param editable true :can input content,and false is can't
      */
     public void setEditable(boolean editable){
+        if(!editable) et_name.setTextColor(Color.GRAY);
         et_name.setClickable(editable);
         et_name.setFocusable(editable);
         et_name.setFocusableInTouchMode(editable);
+        ll_root.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(editable){
+                        et_name.requestFocus();
+                        et_name.setFocusable(true);
+                        Selection.setSelection(et_name.getText(),et_name.getText().toString().length());
+                    }
+                    ZzUtils.toggleSoftKey(et_name,editable);
+
+                }
+        });
+
     }
 
 
-    public void setBottomLineVisiblity(   int visibility){
+    public void setBottomLineVisiblity(int visibility){
         if(visibility == View.VISIBLE||visibility == View.GONE||visibility == View.INVISIBLE)
         line_view.setVisibility(visibility);
     }
@@ -221,9 +237,8 @@ public class ZzItemView extends LinearLayout {
         if(valueBean == null) return;
         tv_name.setText(null==valueBean.getNameValue()?"":valueBean.getNameValue());
         et_name.setText(null==valueBean.getEditValue()?"":valueBean.getEditValue());
-        if(valueBean.isEditable()){
-            this.setInputType(valueBean.getInputType());
+        this.setEditable(valueBean.isEditable());
 
-        }
+
     }
 }

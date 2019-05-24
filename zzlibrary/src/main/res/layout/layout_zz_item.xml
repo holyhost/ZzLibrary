@@ -43,7 +43,18 @@
             app:layout_constraintBottom_toBottomOf="parent"
 
             />
+        <TextView
+
+                android:text="-"
+                android:visibility="invisible"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintLeft_toRightOf="@+id/br_left"
+                app:layout_constraintRight_toLeftOf="@+id/et_name"
+                android:id="@+id/tv_block"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
         <EditText
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
             android:gravity="right"
             android:layout_marginLeft="5dp"
             style="@style/NoUnderline"
@@ -52,14 +63,15 @@
             android:clickable="false"
             android:inputType="none"
             android:id="@+id/et_name"
-            android:layout_width="0dp"
+                android:maxLength="20"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/br_left"
+            app:layout_constraintLeft_toRightOf="@id/tv_block"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-
             />
+
     </android.support.constraint.ConstraintLayout>
     <View
             android:id="@+id/view_split_line"

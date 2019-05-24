@@ -36,9 +36,9 @@ public class FormFragment extends BaseFragment {
     public void finishCreateView(Bundle state) {
         initViews(parentView);
         List<ItemBean> list = new ArrayList<>();
-        list.add(new ItemBean("姓名","小明1"));
-        list.add(new ItemBean("姓名","小明2"));
-        list.add(new ItemBean("姓名","小明3"));
+        list.add(new ItemBean("姓名","小明1",true));
+        list.add(new ItemBean("姓名","小明2",true));
+        list.add(new ItemBean("姓名","小明3",false));
         showResult(list);
 
     }
@@ -57,7 +57,7 @@ public class FormFragment extends BaseFragment {
     public void showResult(List<ItemBean> data) {
         if(null == data||data.size()<1) return;
         if(getContext() == null){
-            LogUtil.e("getcontext = null ----------------");
+            LogUtil.e("FormFragment","getcontext = null ----------------");
             return;
         }
         for(ItemBean bean:data){
