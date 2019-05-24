@@ -55,7 +55,7 @@ publish {
     groupId = 'com.zxyoyo.apk'
     uploadName = 'zzlibrary'
     artifactId = 'zzlibrary'
-    version = '0.0.4'
+    version = '0.0.5'
     description = 'widgets for common using'
     website = "https://github.com/holyhost/zzlibrary"
 }

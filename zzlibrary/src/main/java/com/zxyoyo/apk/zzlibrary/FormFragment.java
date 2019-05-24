@@ -39,6 +39,15 @@ public class FormFragment extends BaseFragment {
         list.add(new ItemBean("姓名","小明1",true));
         list.add(new ItemBean("姓名","小明2",true));
         list.add(new ItemBean("姓名","小明3",false));
+        list.add(new ItemBean("姓名","小明4",false));
+        list.add(new ItemBean("姓名","小明5",false));
+        list.add(new ItemBean("姓名","小明36",false));
+        list.add(new ItemBean("姓名","小明37",false));
+        list.add(new ItemBean("姓名","小明38",false));
+        list.add(new ItemBean("姓名","小明39",false));
+        list.add(new ItemBean("姓名","小明30",false));
+        list.add(new ItemBean("姓名","小明320",false));
+        list.add(new ItemBean("姓名","小明310",false));
         showResult(list);
 
     }
@@ -48,6 +57,7 @@ public class FormFragment extends BaseFragment {
         //init  form data
 
     }
+
 
 
     public void showMessage(String message) {

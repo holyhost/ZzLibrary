@@ -15,9 +15,9 @@ import butterknife.Unbinder;
 
 public abstract class BaseFragment extends Fragment {
     protected View parentView;
-    //初始化完成
+
     protected boolean isPrepared;
-    //fragment可见
+
     protected boolean isVisiable;
 
     private Unbinder bind;
@@ -86,7 +86,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     /**
-     * 数据懒加载
+     * data lazy load
      */
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -102,40 +102,40 @@ public abstract class BaseFragment extends Fragment {
     }
 
     /**
-     * fragment不可见
+     * fragment not visiable
      */
     protected  void onInvisiable(){
 
     }
 
     /**
-     * fragment 可见
+     * fragment
      */
     protected  void onVisiable(){
         loadData();
     }
 
     /**
-     * 加载数据
+     *
      */
     protected  void loadData(){
 
     }
 
     /**
-     * 初始化recyclerView
+     *
      */
     protected void initRecyclerView() {
     }
 
     /**
-     * 初始化refreshLayout
+     *
      */
     protected void initRefreshLayout() {
     }
 
     /**
-     * 设置数据显示
+     *
      */
     protected void finishTask() {
     }
