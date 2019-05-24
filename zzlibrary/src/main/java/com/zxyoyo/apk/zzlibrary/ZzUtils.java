@@ -11,8 +11,6 @@ public class ZzUtils {
 
     /**
      * to open or close keyboard
-     * @param view
-     * @param isShow
      */
     public static void toggleSoftKey(View view, boolean isShow) {
         Context context = view.getContext();

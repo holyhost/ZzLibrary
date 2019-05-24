@@ -214,7 +214,6 @@ public class ZzItemView extends LinearLayout {
 
     /**
      * set item click listener
-     * @param listener
      */
     public void setListener(OnItemClickListener listener) {
         this.listener = listener;

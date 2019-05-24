@@ -51,10 +51,6 @@ public abstract class BaseFragment extends Fragment {
         LogUtil.e("fragmentlife","onViewCreated");
     }
 
-    /**
-     * 初始化view
-     * @param state
-     */
     public abstract void finishCreateView(Bundle state);
 
 
