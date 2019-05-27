@@ -1,5 +1,6 @@
 package com.zxyoyo.apk.testlocal
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -15,9 +16,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        findViewById<ZzItemView>(R.id.zz_123).setOnClickListener((view: View) -> {
-//
-//        })
+        findViewById<ZzItemView>(R.id.zz_123).setOnClickListener{
+            var intent = Intent()
+            intent.setClass(this,HomeActivity().javaClass)
+            startActivity(intent)
+        }
         supportFragmentManager
             .beginTransaction()
             .add(aid,fragment )

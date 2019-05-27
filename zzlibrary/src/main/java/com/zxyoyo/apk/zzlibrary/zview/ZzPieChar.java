@@ -11,6 +11,7 @@ import android.view.View;
 import com.zxyoyo.apk.zzlibrary.DensityUtils;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ZzPieChar extends View {
@@ -27,16 +28,26 @@ public class ZzPieChar extends View {
 
     public ZzPieChar(Context context) {
         super(context);
+        init();
     }
 
     public ZzPieChar(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init();
     }
 
     public ZzPieChar(Context context,  AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init();
     }
 
+
+    private void init() {
+        pieEntries = new ArrayList<>();
+        paint = new Paint();
+        paint.setTextSize(DensityUtils.sp2px(getContext(), 15));
+        paint.setAntiAlias(true);
+    }
 
 
     @Override
@@ -63,7 +74,7 @@ public class ZzPieChar extends View {
             //计算当前扇形扫过的角度
             float sweep = 360 * (pieEntries.get(i).getNumber() / total);
             //设置当前扇形的颜色
-            paint.setColor(getResources().getColor(pieEntries.get(i).colorRes));
+            paint.setColor(pieEntries.get(i).colorRes);
             //判断当前扇形是否被选中，确定用哪个半径
             float radiusT;
             if (pieEntries.get(i).isSelected()) {
