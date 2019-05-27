@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.zxyoyo.apk.zzlibrary.FormFragment
 import com.zxyoyo.apk.zzlibrary.ItemBean
+import com.zxyoyo.apk.zzlibrary.ZzItemView
 import kotlinx.android.synthetic.main.activity_container.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +15,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+//        findViewById<ZzItemView>(R.id.zz_123).setOnClickListener((view: View) -> {
+//
+//        })
         supportFragmentManager
             .beginTransaction()
             .add(aid,fragment )
